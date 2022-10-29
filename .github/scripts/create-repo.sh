@@ -58,7 +58,7 @@ for APK in ${APKS[@]}; do
         --argjson hasChangelog $HASCHANGELOG \
         --argjson pkgFactory $PKGFACTORY \
         --argjson sources "$SOURCE_INFO" \
-        '{name:$name, pkg:$pkg, apk:$apk, lang:$lang, code:$code, version:$version, nsfw:$nsfw, hasReadme:$hasReadme, hasChangelog:$hasChangelog, sources:$sources}'
+        '{name:$name, pkg:$pkg, apk:$apk, lang:$lang, code:$code, version:$version, nsfw:$nsfw, hasReadme:$hasReadme, hasChangelog:$hasChangelog, pkgFactory:$pkgFactory, sources:$sources}'
 
 done | jq -sr '[.[]]' > index.json
 
