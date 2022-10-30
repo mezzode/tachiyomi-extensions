@@ -23,7 +23,7 @@ for APK in ${APKS[@]}; do
     NSFW=$(echo $BADGING | grep -Po "tachiyomi.extension.nsfw' value='\K[^']+")
     HASREADME=$(echo $BADGING | grep -Po "tachiyomi.extension.hasReadme' value='\K[^']+")
     HASCHANGELOG=$(echo $BADGING | grep -Po "tachiyomi.extension.hasChangelog' value='\K[^']+")
-    PKGFACTORY=$(echo $BADGING | grep -Po "tachiyomi.extension.factory' value='\K[^']+")
+    PKGFACTORY=$(echo $BADGING | grep -Po "tachiyomi.extension.factory' value='\K[^']+" || echo null)
 
     APPLICATION=$(echo "$BADGING" | grep application:)
     LABEL=$(echo $APPLICATION | grep -Po "label='\K[^']+")
