@@ -23,7 +23,7 @@ for APK in ${APKS[@]}; do
     NSFW=$(echo $BADGING | grep -Po "tachiyomi.extension.nsfw' value='\K[^']+")
     HASREADME=$(echo $BADGING | grep -Po "tachiyomi.extension.hasReadme' value='\K[^']+")
     HASCHANGELOG=$(echo $BADGING | grep -Po "tachiyomi.extension.hasChangelog' value='\K[^']+")
-    PKGFACTORY=$(echo $BADGING | grep -Po "tachiyomi.extension.factory' value='\K[^']+" || echo null)
+    PKGFACTORY=$(echo $BADGING | grep -Po "tachiyomi.extension.factory' value='\K[^']+")
 
     APPLICATION=$(echo "$BADGING" | grep application:)
     LABEL=$(echo $APPLICATION | grep -Po "label='\K[^']+")
@@ -56,7 +56,7 @@ for APK in ${APKS[@]}; do
         --argjson nsfw $NSFW \
         --argjson hasReadme $HASREADME \
         --argjson hasChangelog $HASCHANGELOG \
-        --argjson pkgFactory $PKGFACTORY \
+        --arg pkgFactory "$PKGFACTORY" \
         --argjson sources "$SOURCE_INFO" \
         '{name:$name, pkg:$pkg, apk:$apk, lang:$lang, code:$code, version:$version, nsfw:$nsfw, hasReadme:$hasReadme, hasChangelog:$hasChangelog, pkgFactory:$pkgFactory, sources:$sources}'
 
